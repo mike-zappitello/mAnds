@@ -2,14 +2,13 @@
 # json manifest for those teams
 import urllib2
 from HTMLParser import HTMLParser
-import dataDirs as dataDir
 import json
-import dataDirs as dataDir
+import string
 
 # url containing color info for all teams
 k_colorUrl = "http://teamcolors.arc90.com/"
 # teams file
-k_teamsFile = (dataDir.k_teamsDir + 'teams.json')
+k_teamsFile = "/Users/mikezappitello/Documents/sub_docs/mAnds/teams2.json"
 
 # open up the team json file
 # create a json string with our new team data
@@ -38,7 +37,10 @@ class colorHTMLParser(HTMLParser):
   def attrIsTeam(self, attr):
     if attr[0] == "id":
       for team in self.teamData:
-        if attr[1] == team['full_name']:
+        teamString = team['location'] + " " + team['name']
+        teamString = teamString.lower()
+        teamString = string.replace(teamString, " ", "-")
+        if attr[1] == teamString:
           self.currentTeamData = team
           self.colors = {}
           self.colorCount = 0
@@ -73,14 +75,10 @@ class colorHTMLParser(HTMLParser):
       attrs and
       self.tag_stack and
       self.tag_stack[-1] == "ul" and
-      attrs[0][0] == "style"):
-        self.tag_stack.append(tag)
-    elif (tag == "span" and
-      attrs and
-      self.tag_stack and
-      self.tag_stack[-1] == "li" and
       attrs[0][0] == "class" and
-      attrs[0][1] == "hex"):
+      attrs[1][0] == "data-hex"):
+        self.colors[str(self.colorCount)] = attrs[1][1]
+        self.colorCount = self.colorCount + 1
         self.tag_stack.append(tag)
 
   # when we reach an end tag, checks with tag stack
@@ -94,15 +92,6 @@ class colorHTMLParser(HTMLParser):
 
       self.tag_stack.pop()
 
-  # handle data
-  #
-  # if our top of our tag stack is "span" we are on a color
-  # add that color to the colors dict to be added to the team later
-  def handle_data(self, data):
-    if len(self.tag_stack) > 0 and  self.tag_stack[-1] == 'span':
-      self.colors[str(self.colorCount)] = data
-      self.colorCount = self.colorCount + 1
-
 # get the html from the color url
 # return the html as a string
 def getColorHtml():
@@ -114,6 +103,9 @@ def getColorHtml():
 
 # setup the parser, get the html, parse it, and save the new stuff
 parser = colorHTMLParser()
-teamData = dataDir.getTeamData()
+
+teamDataFile = open('/Users/mikezappitello/Documents/sub_docs/mAnds/teams.json').read()
+teamData = json.loads(teamDataFile)
+
 newTeamData =  parser.start_parse(getColorHtml(), teamData)
 saveTeamData(newTeamData)
