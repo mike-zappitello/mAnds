@@ -20,6 +20,13 @@ def player_data_as_json():
   player_data = open(k_players_file).read()
   return json.loads(player_data)
 
+def json_debug(data_as_json):
+  print json.dumps(
+    data_as_json,
+    sort_keys=True,
+    indent=2,
+    separators=(",", ":"))
+
 # retrieve all the players on a team as a json object
 #
 # search for the team using a team attribute and its value (e.g. 'abbr', 'okc')
