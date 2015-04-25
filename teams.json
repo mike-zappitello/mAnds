@@ -1,0 +1,304 @@
+{
+[
+  {
+    "id" : 1,
+    "location" : "Boston",
+    "name" : "Celtics",
+    "city" : "Boston",
+    "state" : "Massachusetts",
+    "arena" : "TD Garden",
+    "div" : "Atlantic",
+    "conf" : "Eastern"
+  },
+  {
+    "id" : 2,
+    "location" : "Brooklyn",
+    "name" : "Nets",
+    "city" : "Brooklyn",
+    "state" : "New York",
+    "arena" : "Barclays Center",
+    "div" : "Atlantic",
+    "conf" : "Eastern"
+  },
+  {
+    "id" : 3,
+    "location" : "New York",
+    "name" : "Knicks",
+    "city" : "Manhattan" ,
+    "state" : "New York",
+    "arena" : "Madison Square Garden",
+    "div" : "Atlantic",
+    "conf" : "Eastern"
+  },
+  {
+    "id" : 4,
+    "location" : "Philadelphia",
+    "name" : "76ers",
+    "city" : "Philadelphia" ,
+    "state" : "Pennsylvania",
+    "arena" : "Wells Fargo Center",
+    "div" : "Atlantic",
+    "conf" : "Eastern"
+  },
+  {
+    "id" : 5,
+    "location" : "Toronto",
+    "name" : "Raptors",
+    "city" : "Toronto",
+    "state" : "Ontario",
+    "arena" : "Air Canada Centre",
+    "div" : "Atlantic",
+    "conf" : "Eastern"
+  },
+  {
+    "id" : 6,
+    "location" : "Chicago",
+    "name" : "Bulls",
+    "city" : "Chicago",
+    "state" : "Illinois",
+    "arena" : "United Center",
+    "div" : "Central Division",
+    "conf" : "Eastern"
+  },
+  {
+    "id" : 7,
+    "location" : "Cleveland",
+    "name" : "Cavaliers",
+    "city" : "Cleveland",
+    "state" : "Ohio",
+    "arena" : "Quicken Loans Arena",
+    "div" : "Central Division",
+    "conf" : "Eastern"
+  },
+  {
+    "id" : 8,
+    "location" : "Detroit",
+    "name" : "Pistons",
+    "city" : "Auburn Hills",
+    "state" : "Michigan",
+    "arena" : "The Palace of Auburn Hills",
+    "div" : "Central Division",
+    "conf" : "Eastern"
+  },
+  {
+    "id" : 9,
+    "location" : "Indiana",
+    "name" : "Pacers",
+    "city" : "Indianapolis",
+    "state" : "Indiana",
+    "arena" : "Bankers Life Fieldhouse",
+    "div" : "Central Division",
+    "conf" : "Eastern"
+  },
+  {
+    "id" : 10,
+    "location" : "Milwaukee",
+    "name" : "Bucks",
+    "city" : "Milwaukee",
+    "state" : "Wisconsin",
+    "arena" : "BMO Harris Bradley Center",
+    "div" : "Central Division",
+    "conf" : "Eastern"
+  },
+  {
+    "id" : 11,
+    "location" : "Atlanta",
+    "name" : "Hawks",
+    "city" : "Atlanta",
+    "state" : "Georgia",
+    "arena" : "Philips Arena",
+    "div" : "Southeast Division",
+    "conf" : "Eastern"
+  },
+  {
+    "id" : 12,
+    "location" : "Charlotte",
+    "name" : "Hornets",
+    "city" : "Charlotte",
+    "state" : "North Carolina",
+    "arena" : "Time Warner Cable Arena",
+    "div" : "Southeast Division",
+    "conf" : "Eastern"
+  },
+  {
+    "id" : 13,
+    "location" : "Miami",
+    "name" : "Heat" ,
+    "city" : "Miami",
+    "state" : "Florida",
+    "arena" : "American Airlines Arena",
+    "div" : "Southeast Division",
+    "conf" : "Eastern"
+  },
+  {
+    "id" : 14,
+    "location" : "Orlando",
+    "name" : "Magic",
+    "city" : "Orlando",
+    "state" : "Florida",
+    "arena" : "Amway Center",
+    "div" : "Southeast Division",
+    "conf" : "Eastern"
+  },
+  {
+    "id" : 15,
+    "location" : "Washington",
+    "name" : "Wizards",
+    "city" : "Washington",
+    "state" : "D.C.",
+    "arena" : "Verizon Center",
+    "div" : "Southeast Division",
+    "conf" : "Eastern"
+  },
+  {
+    "id" : 16,
+    "location" : "Denver",
+    "name" : "Nuggets",
+    "city" : "Denver",
+    "state" : "Colorado",
+    "arena" : "Pepsi Center",
+    "div" : "Northwest Division",
+    "conf" : "Western"
+  },
+  {
+    "id" : 17,
+    "location" : "Minnesota",
+    "name" : "Timberwolves",
+    "city" : "Minneapolis",
+    "state" : "Minnesota",
+    "arena" : "Target Center",
+    "div" : "Northwest Division",
+    "conf" : "Western"
+  },
+  {
+    "id" : 18,
+    "location" : "Oklahoma City",
+    "name" : "Thunder",
+    "city" : "Oklahoma City",
+    "state" : "Oklahoma",
+    "arena" : "Chesapeake Energy Arena",
+    "div" : "Northwest Division",
+    "conf" : "Western"
+  },
+  {
+    "id" : 19,
+    "location" : "Portland",
+    "name" : "Trail Blazers",
+    "city" : "Portland",
+    "state" : "Oregon",
+    "arena" : "Moda Center",
+    "div" : "Northwest Division",
+    "conf" : "Western"
+  },
+  {
+    "id" : 20,
+    "location" : "Utah",
+    "name" : "Jazz",
+    "city" : "Salt Lake City",
+    "state" : "Utah",
+    "arena" : "EnergySolutions Arena",
+    "div" : "Northwest Division",
+    "conf" : "Western"
+  },
+  {
+    "id" : 21,
+    "location" : "Golden State",
+    "name" : "Warriors",
+    "city" : "Oakland",
+    "state" : "California",
+    "arena" : "Oracle Arena",
+    "div" : "Pacific Division",
+    "conf" : "Western"
+  },
+  {
+    "id" : 22,
+    "location" : "Los Angeles",
+    "name" : "Clippers",
+    "city" : "Los Angeles",
+    "state" : "California",
+    "arena" : "Staples Center",
+    "div" : "Pacific Division",
+    "conf" : "Western"
+  },
+  {
+    "id" : 23,
+    "location" : "Los Angeles",
+    "name" : "Lakers",
+    "city" : "Los Angeles",
+    "state" : "California",
+    "arena" : "Staples Center",
+    "div" : "Pacific Division",
+    "conf" : "Western"
+  },
+  {
+    "id" : 24,
+    "location" : "Phoenix",
+    "name" : "Suns",
+    "city" : "Phoenix",
+    "state" : "Arizona",
+    "arena" : "Talking Stick Resort Arena",
+    "div" : "Pacific Division",
+    "conf" : "Western"
+  },
+  {
+    "id" : 25,
+    "location" : "Sacramento",
+    "name" : "Kings",
+    "city" : "Sacramento",
+    "state" : "California",
+    "arena" : "Sleep Train Arena",
+    "div" : "Pacific Division",
+    "conf" : "Western"
+  },
+  {
+    "id" : 26,
+    "location" : "Dallas",
+    "name" : "Mavericks",
+    "city" : "Dallas",
+    "state" : "Texas",
+    "arena" : "American Airlines Center",
+    "div" : "Southwest Division",
+    "conf" : "Western"
+  },
+  {
+    "id" : 27,
+    "location" : "Houston",
+    "name" : "Rockets",
+    "city" : "Houston",
+    "state" : "Texas",
+    "arena" : "Toyota Center",
+    "div" : "Southwest Division",
+    "conf" : "Western"
+  },
+  {
+    "id" : 28,
+    "location" : "Memphis",
+    "name" : "Grizzlies",
+    "city" : "Memphis, Tennessee",
+    "state" : "Tennessee",
+    "arena" : "FedExForum",
+    "div" : "Southwest Division",
+    "conf" : "Western"
+  },
+  {
+    "id" : 29,
+    "location" : "New Orleans",
+    "name" : "Pelicans",
+    "city" : "New Orleans",
+    "state" : "Louisiana",
+    "arena" : "Smoothie King Center",
+    "div" : "Southwest Division",
+    "conf" : "Western"
+  },
+  {
+    "id" : 30,
+    "location" : "San Antonio",
+    "name" : "Spurs",
+    "city" : "San Antonio",
+    "state" : "Texas",
+    "arena" : "AT&T Center",
+    "div" : "Southwest Division",
+    "conf" : "Western"
+  }
+]
+}
