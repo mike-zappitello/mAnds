@@ -1,22 +1,10 @@
 import urllib2
 from HTMLParser import HTMLParser
-import dataDirs as dataDir
 import json
 import re
 
 # url containing roster data
 k_baseUrl = 'http://www.eskimo.com/~pbender/rosters.html'
-
-# open up the team json file
-# create a json string with our new team data
-# save and close the file
-def saveTeamData(teamData):
-  teamsFileString = (k_teamsFile)
-  teamsFile = open(teamsFileString, 'w')
-  newData = {'teams' : teamData}
-  newTeamsData = json.dumps(newData,sort_keys=True, indent=2, separators=(",", ":"))
-  teamsFile.write(newTeamsData)
-  teamsFile.close()
 
 # class to parse the k_baseUrl for teams
 class rosterHTMLParser(HTMLParser):
@@ -26,7 +14,7 @@ class rosterHTMLParser(HTMLParser):
     self.players = []
     self.tag_stack = []
     self.feed(html)
-    return self.teamData
+    saveData(self.players)
 
   # handles the starting tags
   # if the tag is A then we have a new team and we call setCurrentTeam
@@ -46,7 +34,7 @@ class rosterHTMLParser(HTMLParser):
   # if the tag stack has an element, its PRE, and we need to parse the data
   def handle_data(self, data):
     if self.tag_stack:
-      self.currentTeamData['roster'] = self.parseData(data)
+      self.parseData(data)
 
   # handle a data string
   # for each line i throw it through some ugly regex
@@ -54,7 +42,6 @@ class rosterHTMLParser(HTMLParser):
   # return a list of thoes player dicts
   def parseData(self, data):
     lines = data.split('\n')
-    players = []
     for line in lines:
       match = re.match(r"^\s?((?P<number>\d{1,2})|\?\?)(\s|\?|\*)*(?P<first_name>(\w|')*)\s?(?P<last_name>(\w|')*)\s*\.*\s*(?P<position>\w-?\w?)\s*(?P<height>\d-\d{1,2})\s*(?P<weight>\d{3})\s*(?P<birthday>\d{1,2}/\d{1,2}/\d{2})\s*(?P<the_rest>.*)", line)
       if match:
@@ -73,9 +60,8 @@ class rosterHTMLParser(HTMLParser):
         for word in the_rest:
           college = college + word + ' '
         player['college'] = college.rstrip()
-        players.append(player)
-
-    return players
+        player['current_team_id'] = self.currentTeamId
+        self.players.append(player)
 
   # takes a team abbreviation from the website
   # fixes the abbr for the four teams that have weird abbrevs
@@ -88,13 +74,10 @@ class rosterHTMLParser(HTMLParser):
     elif teamAbbr == 'uta':
       teamAbbr = 'utah'
     elif teamAbbr == 'bro':
-      teamAbbr = 'bkn'
-    elif teamAbbr == 'was':
-      teamAbbr = 'wsh'
+      teamAbbr = 'bk'
     for team in self.teamData:
       if teamAbbr == team['abbr']:
-        self.currentTeamData = team
-        return
+        self.currentTeamId = team['id']
 
 # get the html from the roster url
 def getRosterHtml():
@@ -110,12 +93,14 @@ def getRosterHtml():
 
 def saveData(dataAsList):
   jsonRoster = json.dumps(dataAsList, sort_keys=True, indent=2)
-  jsonFile = open(dataDir.k_rosterDir + 'leagueRoster.json', 'w')
+  jsonFile = open('/Users/mikezappitello/Documents/sub_docs/mAnds/players.json', 'w')
   jsonFile.write(jsonRoster)
   jsonFile.close()
 
 # setup the parser, get the html, parse it, and save the new stuff
 parser = rosterHTMLParser()
-teamData = dataDir.getTeamData()
-newData =  parser.start_parse(getRosterHtml(), teamData)
-saveTeamData(newData)
+
+teamDataFile = open('/Users/mikezappitello/Documents/sub_docs/mAnds/teams.json').read()
+teamData = json.loads(teamDataFile)['teams']
+
+parser.start_parse(getRosterHtml(), teamData)
