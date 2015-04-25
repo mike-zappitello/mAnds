@@ -1,20 +1,22 @@
 # script to grap all of the colors for each team and add it to our
 # json manifest for those teams
+import sys
+sys.path.append('/Users/mikezappitello/Documents/sub_docs/mAnds')
+
 import urllib2
 from HTMLParser import HTMLParser
 import json
 import string
+from data import data_access as da
 
 # url containing color info for all teams
 k_colorUrl = "http://teamcolors.arc90.com/"
-# teams file
-k_teamsFile = "/Users/mikezappitello/Documents/sub_docs/mAnds/teams2.json"
 
 # open up the team json file
 # create a json string with our new team data
 # save and close the file
 def saveTeamData(teamData):
-  teamsFileString = (k_teamsFile)
+  teamsFileString = (da.k_teams_file)
   teamsFile = open(teamsFileString, 'w')
   newData = {'teams' : teamData}
   newTeamsData = json.dumps(newData,sort_keys=True, indent=2, separators=(",", ":"))
@@ -104,8 +106,7 @@ def getColorHtml():
 # setup the parser, get the html, parse it, and save the new stuff
 parser = colorHTMLParser()
 
-teamDataFile = open('/Users/mikezappitello/Documents/sub_docs/mAnds/teams.json').read()
-teamData = json.loads(teamDataFile)
+team_data = da.team_data_as_json()
 
-newTeamData =  parser.start_parse(getColorHtml(), teamData)
+newTeamData =  parser.start_parse(getColorHtml(), team_data)
 saveTeamData(newTeamData)

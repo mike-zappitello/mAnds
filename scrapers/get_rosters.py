@@ -1,7 +1,11 @@
+import sys
+sys.path.append('/Users/mikezappitello/Documents/sub_docs/mAnds')
+
 import urllib2
 from HTMLParser import HTMLParser
 import json
 import re
+from data import data_access as da
 
 # url containing roster data
 k_baseUrl = 'http://www.eskimo.com/~pbender/rosters.html'
@@ -93,14 +97,11 @@ def getRosterHtml():
 
 def saveData(dataAsList):
   jsonRoster = json.dumps(dataAsList, sort_keys=True, indent=2)
-  jsonFile = open('/Users/mikezappitello/Documents/sub_docs/mAnds/players.json', 'w')
+  jsonFile = open(da.k_players_file, 'w')
   jsonFile.write(jsonRoster)
   jsonFile.close()
 
 # setup the parser, get the html, parse it, and save the new stuff
 parser = rosterHTMLParser()
-
-teamDataFile = open('/Users/mikezappitello/Documents/sub_docs/mAnds/teams.json').read()
-teamData = json.loads(teamDataFile)['teams']
-
+teamData = da.team_data_as_json()
 parser.start_parse(getRosterHtml(), teamData)
