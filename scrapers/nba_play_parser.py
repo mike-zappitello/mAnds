@@ -134,7 +134,7 @@ class nba_play_parser():
         """
         match = re.match(r'^(?P<player>.+)\s+((makes)|(misses))\s*(?P<details>.+)$', self.play_as_string)
         if match:
-            self.details.player_id = self.player_finder.find_player_id(match.group('player'))
+            self.details.player = self.player_finder.find_player_id(match.group('player'))
             self.details.parse_details(match.group('details'))
         else:
             print self.play_as_string
@@ -147,7 +147,7 @@ class nba_play_parser():
         """
         match = re.match(r'^.*$', self.play_as_string)
         if match:
-            self.details.player_id = self.player_finder.find_player_id('Elfrid Payton')
+            self.details.player = self.player_finder.find_player_id('Elfrid Payton')
             self.details.parse_details("wat")
         else:
             print self.play_as_string
@@ -159,7 +159,7 @@ class nba_play_parser():
         """
         match = re.match(r'^.*$', self.play_as_string)
         if match:
-            self.details.player_id = self.player_finder.find_player_id('Elfrid Payton')
+            self.details.player = self.player_finder.find_player_id('Elfrid Payton')
             self.details.parse_details("wat")
         else:
             print self.play_as_string
@@ -171,7 +171,7 @@ class nba_play_parser():
         """
         match = re.match(r'^.*$', self.play_as_string)
         if match:
-            self.details.player_id = self.player_finder.find_player_id('Elfrid Payton')
+            self.details.player = self.player_finder.find_player_id('Elfrid Payton')
             self.details.parse_details("wat")
         else:
             print self.play_as_string
@@ -183,15 +183,20 @@ class nba_play_parser():
         line to the end of that file.
         """
         if self.play_type == play_type().SHOT:
-            csv = self.details.for_csv()
+            a = 1
+            print self.details.for_csv()
         elif self.play_type == play_type().FOUL:
-            csv = self.details.for_csv()
+            a = 1
+            # print self.details.for_csv()
         elif self.play_type == play_type().REBOUND:
-            csv = self.details.for_csv()
+            a = 1
+            # print self.details.for_csv()
         elif self.play_type == play_type().TURNOVER:
-            csv = self.details.for_csv()
+            a = 1
+            # print self.details.for_csv()
         elif self.play_type == play_type().BLOCK:
-            csv = self.details.for_csv()
+            a = 1
+            # print self.details.for_csv()
         elif self.play_type == play_type().SKIP:
             a = 1
         elif self.play_as_string:

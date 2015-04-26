@@ -8,7 +8,7 @@ import json
 import copy
 import grab_game_urls as urls
 from data import data_access as da
-from nba_play import nba_play_parser, play_type
+from nba_play_parser import nba_play_parser, play_type
 
 def generatePbpHtml(game_id):
     """
