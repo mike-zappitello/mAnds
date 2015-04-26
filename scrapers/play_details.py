@@ -4,14 +4,6 @@ sys.path.append('/Users/mikezappitello/Documents/sub_docs/mAnds')
 import re
 from data.data_access import *
 
-def player_to_csv(player):
-  """
-  take json detail on a player and turn it into a string for csv
-  """
-  ret = player["last_name"] + ", "
-  ret += player["first_name"]
-  return ret
-
 class nba_foul():
   """
   not necessarily a hard playoff foul, but someone did something they
@@ -44,8 +36,7 @@ class nba_rebound():
     self.offensive = True
 
   def for_csv(self):
-    ret = player_to_csv(self.player) + ", "
-    return ret
+    return ""
 
 class nba_block():
   """
@@ -145,12 +136,12 @@ class nba_shot():
     return a string that will be appended to the end of a dot csv file.
     """
     ret = str(self.made) + ", "
-    ret = ret + player_to_csv(self.player) + ", "
-    ret = ret + str(self.value) + ", "
+    ret += str(self.player["player_id"]) + ", "
+    ret += str(self.value) + ", "
     if self.assister:
-      ret = ret + player_to_csv(self.assister)
+      ret += str(self.assister["player_id"]) + ", "
     else:
-      ret = ret + "none"
+      ret += "none"
 
     return ret
 
