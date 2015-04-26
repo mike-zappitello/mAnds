@@ -87,15 +87,16 @@ class gameHTMLParser(HTMLParser):
       self.home_score = 0
       self.away_score = 0
 
-    def start_parse(self, html):
+    def start_parse(self, game_id):
         """
         function to start the parser, taking in the url and dates array
         """
+        self.game_id = game_id
         self.started_game = False
         self.in_record = False 
         self.tag_stack = []
         self.quarter = 1
-        self.feed(html)
+        self.feed(generatePbpHtml(game_id))
 
     def handle_starttag(self, tag, attrs):
         """
@@ -151,7 +152,7 @@ class gameHTMLParser(HTMLParser):
       players = da.team_roster('id', self.home_id)
       players = players + da.team_roster('id', self.away_id)
       self.started_game = True
-      self.play_parser = nba_play_parser(players)
+      self.play_parser = nba_play_parser(players, self.game_id)
 
     def handle_data(self, data):
         """
@@ -200,4 +201,4 @@ for date in dates:
 html = generatePbpHtml(400579312)
 # html = generateTestHtml()
 parser = gameHTMLParser()
-data = parser.start_parse(html)
+data = parser.start_parse(400579312)

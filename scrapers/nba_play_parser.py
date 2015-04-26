@@ -26,7 +26,7 @@ class nba_play_parser():
     setting the play string parses out the play
     """
 
-    def __init__(self, players):
+    def __init__(self, players, game_id):
         """
         constructor for a play.
         
@@ -34,6 +34,7 @@ class nba_play_parser():
         so we'll add that in here. also create the player_finder for a list of
         players
         """
+        self.game_id = game_id
         self.play_type = play_type().UNKNOWN
         self.quarter = 1
         self.player_finder = player_finder(players)
