@@ -2254,7 +2254,19 @@
     "number": "2", 
     "position": "G", 
     "weight": "214"
-  }, 
+  },
+  {
+    "birthday": "9/19/91",
+    "college": "Lehigh'13",
+    "current_team_id": 19,
+    "experience": "1",
+    "first_name": "C.J.",
+    "height": "6-3",
+    "last_name": "McCollum",
+    "number": "3",
+    "position": "G",
+    "weight": "197"
+  },
   {
     "birthday": "10/15/85", 
     "college": "UCLA'08", 
