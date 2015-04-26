@@ -4,6 +4,7 @@ sys.path.append('/Users/mikezappitello/Documents/sub_docs/mAnds')
 from play_details import *
 import re
 from data.data_access import player_finder
+import data.data_access as da
 
 class play_type():
     """
@@ -36,8 +37,12 @@ class nba_play_parser():
         """
         self.game_id = game_id
         self.play_type = play_type().UNKNOWN
+        self.shots_csv_file = open(da.k_shots_csv, 'a')
         self.quarter = 1
         self.player_finder = player_finder(players)
+
+    def __del__(self):
+      self.shots_csv_file.close()
 
     def reset(self, quarter):
         """
@@ -184,8 +189,7 @@ class nba_play_parser():
         line to the end of that file.
         """
         if self.play_type == play_type().SHOT:
-            a = 1
-            print self.details.for_csv()
+            self.shots_csv_file.write(self.details.for_csv(self.game_id))
         elif self.play_type == play_type().FOUL:
             a = 1
             # print self.details.for_csv()

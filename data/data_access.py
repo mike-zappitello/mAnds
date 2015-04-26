@@ -10,6 +10,9 @@ k_data_dir = k_top_dir + 'data/'
 k_teams_file = k_data_dir + 'teams.json'
 k_players_file = k_data_dir + 'players.json'
 
+k_csv_dir = k_data_dir + 'csvs/'
+k_shots_csv = k_csv_dir + 'shots.csv'
+
 def team_data_as_json():
   """
   retrieve all of the teams data as a json object

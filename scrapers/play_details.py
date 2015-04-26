@@ -4,6 +4,9 @@ sys.path.append('/Users/mikezappitello/Documents/sub_docs/mAnds')
 import re
 from data.data_access import *
 
+k_seperator = ','
+k_endl = '\n'
+
 class nba_foul():
   """
   not necessarily a hard playoff foul, but someone did something they
@@ -131,17 +134,18 @@ class nba_shot():
     else:
       self.value = 2
 
-  def for_csv(self):
+  def for_csv(self, game_id):
     """
     return a string that will be appended to the end of a dot csv file.
     """
-    ret = str(self.made) + ", "
-    ret += str(self.player["player_id"]) + ", "
-    ret += str(self.value) + ", "
+    ret = str(self.made) + k_seperator
+    ret += str(self.player["player_id"]) + k_seperator
+    ret += str(self.value) + k_seperator
     if self.assister:
-      ret += str(self.assister["player_id"]) + ", "
+      ret += str(self.assister["player_id"]) + k_seperator
     else:
-      ret += "none"
+      ret += "none" + k_seperator
+    ret += str(game_id) + k_endl
 
     return ret
 
