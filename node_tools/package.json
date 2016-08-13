@@ -11,7 +11,8 @@
   "bugs": {
   },
   "dependencies": {
-    "nba": "latest"
+    "nba": "latest",
+    "q": "latest"
   },
   "devDependencies": {
   },
