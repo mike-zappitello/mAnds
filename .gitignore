@@ -1,4 +1,9 @@
+# stupid vm swap files
 *.swp
 *.swo
 
+# python executables
 *.pyc
+
+# node modules
+node_tools/node_modules/
