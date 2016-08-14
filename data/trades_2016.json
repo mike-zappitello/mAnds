@@ -1,104 +1,138 @@
 [
-    Joel Anthony: {
-        to: 76ERS
+    {
+        "name": "Joel Anthony",
+        "to": "76ERS"
     },
-    Brian Roberts: {
-        to: BLAZERS
+    {
+        "name": "Brian Roberts",
+        "to": "BLAZERS"
     },
-    Justin Holiday: {
-        to: Bulls
+    {
+        "name": "Justin Holiday",
+        "to": "Bulls"
     },
-    Courtney Lee: {
-        to: CHARLOTTE
+    {
+        "name": "Courtney Lee",
+        "to": "CHARLOTTE"
     },
-    Channing Frye: {
-        to: CLEVELAND
+    {
+        "name": "Channing Frye",
+        "to": "CLEVELAND"
     },
-    Jeff Green: {
-        to: CLIPPERS
+    {
+        "name": "Jeff Green",
+        "to": "CLIPPERS"
     },
-    Donatas Motiejunas: {
-        to: DETROIT
+    {
+        "name": "Donatas Motiejunas",
+        "to": "DETROIT"
     },
-    Marcus Thornton: {
-        to: DETROIT
+    {
+        "name": "Marcus Thornton",
+        "to": "DETROIT"
     },
-    Tobias Harris: {
-        to: DETROIT
+    {
+        "name": "Tobias Harris",
+        "to": "DETROIT"
     },
-    Lance Stephenson: {
-        to: GRIZZLIES
+    {
+        "name": "Lance Stephenson",
+        "to": "GRIZZLIES"
     },
-    Kirk Hinrich: {
-        to: HAWKS
+    {
+        "name": "Kirk Hinrich",
+        "to": "HAWKS"
     },
-    Joel Anthony: {
-        to: HOUSTON
+    {
+        "name": "Joel Anthony",
+        "to": "HOUSTON"
     },
-    Josh Smith: {
-        to: HOUSTON
+    {
+        "name": "Josh Smith",
+        "to": "HOUSTON"
     },
-    Shelvin Mack: {
-        to: JAZZ
+    {
+        "name": "Shelvin Mack",
+        "to": "JAZZ"
     },
-    Chris Andersen: {
-        to: MEMPHIS
+    {
+        "name": "Chris Andersen",
+        "to": "MEMPHIS"
     },
-    James Ennis: {
-        to: MEMPHIS
+    {
+        "name": "James Ennis",
+        "to": "MEMPHIS"
     },
-    Mario Chalmers: {
-        to: MEMPHIS
+    {
+        "name": "Mario Chalmers",
+        "to": "MEMPHIS"
     },
-    P.J. Hairston: {
-        to: MEMPHIS
+    {
+        "name": "P.",
+        "to": "MEMPHIS"
     },
-    Beno Udrih: {
-        to: MIAMI
+    {
+        "name": "Beno Udrih",
+        "to": "MIAMI"
     },
-    Brian Roberts: {
-        to: MIAMI
+    {
+        "name": "Brian Roberts",
+        "to": "MIAMI"
     },
-    Jarnell Stokes: {
-        to: MIAMI
+    {
+        "name": "Jarnell Stokes",
+        "to": "MIAMI"
     },
-    Jarnell Stokes: {
-        to: NEW ORLEANS
+    {
+        "name": "Jarnell Stokes",
+        "to": "NEW ORLEANS"
     },
-    D.J. Augustin: {
-        to: NUGGETS
+    {
+        "name": "D.",
+        "to": "NUGGETS"
     },
-    Steve Novak: {
-        to: NUGGETS 
+    {
+        "name": "Steve Novak",
+        "to": "NUGGETS "
     },
-    Brandon Jennings: {
-        to: ORLANDO 
+    {
+        "name": "Brandon Jennings",
+        "to": "ORLANDO "
     },
-    Ersan Ilyasova: {
-        to: ORLANDO 
+    {
+        "name": "Ersan Ilyasova",
+        "to": "ORLANDO "
     },
-    Jared Cunningham: {
-        to: ORLANDO 
+    {
+        "name": "Jared Cunningham",
+        "to": "ORLANDO "
     },
-    Joe Harris: {
-        to: ORLANDO 
+    {
+        "name": "Joe Harris",
+        "to": "ORLANDO "
     },
-    Ish Smith: {
-        to: PHILADELPHIA 
+    {
+        "name": "Ish Smith",
+        "to": "PHILADELPHIA "
     },
-    Anderson Varejao: {
-        to: PORTLAND 
+    {
+        "name": "Anderson Varejao",
+        "to": "PORTLAND "
     },
-    DeJuan Blair: {
-        to: SUNS 
+    {
+        "name": "DeJuan Blair",
+        "to": "SUNS "
     },
-    Kris Humphries: {
-        to: SUNS 
+    {
+        "name": "Kris Humphries",
+        "to": "SUNS "
     },
-    Randy Foye: {
-        to: THUNDER 
+    {
+        "name": "Randy Foye",
+        "to": "THUNDER "
     },
-    Markieff Morris: {
-        to: WIZARDS 
-    }
+    {
+        "name": "Markieff Morris",
+        "to": "WIZARDS "
+   }
 ]
