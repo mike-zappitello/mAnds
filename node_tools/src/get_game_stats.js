@@ -5,6 +5,8 @@
 
 let nbaDotCom = require("nba");
 let q = require('q');
+let path = require('path');
+let fs = require('fs');
 
 // get the stats for a player
 // @player_name - the name for the player
@@ -83,6 +85,12 @@ let getPlayerStats = function (playerName) {
   });
 };
 
+let getTradedPlayers = function() {
+  let tradesFilePath = path.join(__dirname, '..', '..', 'data/trades_2016.json');
+  return JSON.parse(fs.readFileSync(tradesFilePath, 'utf8'))
+}
+
 module.exports = {
-   getPlayerStats 
+  getPlayerStats,
+  getTradedPlayers
 };
