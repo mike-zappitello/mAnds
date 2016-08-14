@@ -18,19 +18,68 @@ let getPlayerStats = function (playerName) {
     throw new Error("Unable to find player `" + playerName + '`.');
   }
 
-  let requestOverrides = {playerId: player.playerId};
+  let getGameBoxScore = function(gameId) {
+    // create a promise we'll fulfill another day
+    let deferred = q.defer();
 
-  return q.nfapply(nbaDotCom.stats.playerProfile, [ requestOverrides ])
+    // debugging tool
+    // let gameId = '0020900001';
+
+    // create the players full name to compare each line to
+    playerName = player.firstName + " " + player.lastName;
+
+    // get the box score stats for the current game id
+    q.nfapply(nbaDotCom.stats.boxScore, [{gameId: gameId}])
+    // then run through each entry, looking for the playername
+    .then(function(boxscore) {
+      boxscore.playerStats.forEach(function(statLine) {
+        if (statLine.playerName === playerName) deferred.resolve(statLine);
+      });
+      deferred.reject("player did not play in this game");
+    });
+
+    return deferred.promise;
+  }
+
+  return q.nfapply(nbaDotCom.stats.playerProfile, [{playerId: player.playerId}])
   .then(function(playerData) {
-      // get the game ids 
-      let graphGameList = playerData.graphGameList;
       let games = [];
 
-      graphGameList.forEach(function(game) {
-          games.push( { gameId: game.gameId, team: game.teamAbbreviation } );
+      // debugging tool
+      let total = 0;
+
+      // itterate throught he game list, grab each game id and add it to games
+      playerData.graphGameList.forEach(function(game) {
+          if (total < 5) {
+            games.push( { gameId: game.gameId, team: game.teamAbbreviation } );
+          }
+          total++;
       });
 
-      return games;
+      return games
+  })
+  .then(function(games) {
+    // create a promise we'll fulfill another day
+    let deferred = q.defer();
+
+    // create an array of stat line promises
+    let statlinePromises = [];
+    games.forEach(function(game) {
+        statlinePromises.push(getGameBoxScore(game.gameId));
+    });
+
+    // collect all of the fulfilled promises
+    q.all(statlinePromises)
+    // add stat lines to each of the games
+   .then(function(statlines) {
+      // promises are resolved in the same order they were requested
+      for (let n=0; n < statlines.length; n++) {
+        games[n].statline = statlines[0];
+      }
+      deferred.resolve(games);
+    });
+
+    return deferred.promise
   });
 };
 
