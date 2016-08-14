@@ -52,7 +52,7 @@ let getPlayerStats = function (playerName) {
 
       // itterate throught he game list, grab each game id and add it to games
       playerData.graphGameList.forEach(function(game) {
-          if (total < 5) {
+          if (total < 1000) {
             games.push( { gameId: game.gameId, team: game.teamAbbreviation } );
           }
           total++;
@@ -88,9 +88,36 @@ let getPlayerStats = function (playerName) {
 let getTradedPlayers = function() {
   let tradesFilePath = path.join(__dirname, '..', '..', 'data/trades_2016.json');
   return JSON.parse(fs.readFileSync(tradesFilePath, 'utf8'))
-}
+};
+
+let getStatsForTradedPlayers = function() {
+  let deferred = q.defer();
+
+  let players = getTradedPlayers();
+  let boxscorePromises= [];
+  let total = 0;
+  players.forEach(function(player) {
+    if (total < 1) {
+      console.log(`creating promise for ${player.name}`);
+      boxscorePromises.push(getPlayerStats(player.name));
+    }
+    total++;
+  });
+
+  q.all(boxscorePromises)
+  .then(function(boxscores) {
+    for (let n=0; n < boxscores.length; n++) {
+      console.log("storing boxscores!");
+      players[n].games = boxscores[n];
+    }
+    deferred.resolve(players);
+  });
+
+  return deferred.promise;
+};
 
 module.exports = {
   getPlayerStats,
-  getTradedPlayers
+  getTradedPlayers,
+  getStatsForTradedPlayers
 };
