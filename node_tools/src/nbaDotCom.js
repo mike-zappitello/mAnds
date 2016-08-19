@@ -19,7 +19,7 @@ let q = require('q');
 let findPlayer = function(playerName) {
   // TODO - move this to a data access utils
   let player = nba.findPlayer(playerName);
-  if (!player === null) {
+  if (player === null) {
     throw new Error("Unable to find player `" + playerName + '`.');
   }
   return player;
@@ -109,25 +109,35 @@ module.exports = {
   getPlayerProfile,
 };
 
-/*
-// get the stats for a player
-// @player - the name for the player
+// get the stats for a player in the 2015 season
 //
-// @returns -  [ { gameId: <Number>, team: <String>,  stats: <Stats> }]
+// NOTE - this is a chaining up of stat calls and parsing them. it filters
+// things out by date now, but it could really be built to sort out by all kinds
+// of stuff. 
 let getPlayerStats = function (player) {
-  // TODO - the full name should be in the player object
-  playerName = player.firstName + " " + player.lastName;
   let games = [];
 
   /// fill out games array from the player profile
   let createGamesList = function(playerProfile) {
+    let startOfSeason = new Date("08/30/2015");
+    let endOfSeason = new Date("08/30/2026");
+
     playerProfile.graphGameList.forEach(function(game) {
-        games.push( { gameId: game.gameId, team: game.teamAbbreviation } );
+        let date = new Date(game.gameDate);
+        if (startOfSeason < date && date < endOfSeason) {
+          games.push( {
+            gameId: game.gameId,
+            team: game.teamAbbreviation,
+            date: game.gameDate,
+            vs: game.vsTeamAbbreviation
+          } );
+        }
     });
   };
 
   /// create an array of box score promises for each game
-  let getPlayerScores = function(games) {
+  let getPlayerScores = function() {
+
     let boxscorePromises = [];
     games.forEach(function(game) {
         boxscorePromises.push(getGameBoxScore(game.gameId));
@@ -135,13 +145,29 @@ let getPlayerStats = function (player) {
     return q.all(boxscorePromises);
   };
 
-  /// parse the array of box scores for the desired players stats
+  /// itterate through each boxscore and find the players statline
   let parsePlayerScores = function(boxscores) {
     for (let n=0; n < boxscores.length; n++) {
-      boxscores[n].playerStats.forEach(function(statLine) {
-        if (statLine.playerName === playerName)  deferred.resolve(statLine);
-      games[n].statline = statlines[0];
-    });
+      boxscores[n].playerStats.forEach(function(statline) {
+        if (statline.playerName === player.fullName) {
+          // this is obviously embarassing and needs to be cleaned up in a
+          // better way. X_x
+          games[n].statline = {
+            comment: statline.comment, min: statline.min, fgm: statline.fgm,
+            fga: statline.fga, fgPct: statline.fgPct, fG3M: statline.fG3M,
+            fG3A: statline.fG3A, fg3Pct: statline.fg3Pct, ftm: statline.ftm,
+            fta: statline.fta, ftPct: statline.ftPct, oreb: statline.oreb,
+            dreb: statline.dreb, reb: statline.reb, ast: statline.ast,
+            stl: statline.stl, blk: statline.blk, to: statline.to,
+            pf: statline.pf, pts: statline.pts, plusMinus: statline.plusMinus
+          };
+
+          // exit for each function
+          return true;
+        };
+      });
+    }
+    return games;
   };
 
   /// generate a promise to keep (catch here maybe?)
@@ -149,45 +175,12 @@ let getPlayerStats = function (player) {
   .then(createGamesList)
   .then(getPlayerScores)
   .then(parsePlayerScores);
-};
 
-let getTradedPlayers = function() {
-  let tradesFilePath = path.join(__dirname, '..', '..', 'data/trades_2016.json');
-  return JSON.parse(fs.readFileSync(tradesFilePath, 'utf8'));
-};
-
-let getStatsForTradedPlayers = function() {
-  let deferred = q.defer();
-
-  let players = getTradedPlayers();
-  let boxscorePromises= [];
-  let total = 0;
-  players.forEach(function(player) {
-    if (total < 1) {
-      console.log(`creating promise for ${player.name}`);
-      boxscorePromises.push(getPlayerStats(player.name));
-    }
-    total++;
-  });
-
-  q.all(boxscorePromises)
-  .then(function(boxscores) {
-    for (let n=0; n < boxscores.length; n++) {
-      console.log("storing boxscores!");
-      players[n].games = boxscores[n];
-    }
-    deferred.resolve(players);
-  });
-
-  return deferred.promise;
 };
 
 module.exports = {
   findPlayer,
-  getPlayerProfile,
   getGameBoxScore,
-  getPlayerStats,
-  getTradedPlayers,
-  getStatsForTradedPlayers
+  getPlayerProfile,
+  getPlayerStats
 };
-*/
