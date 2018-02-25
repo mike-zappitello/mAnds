@@ -14,6 +14,7 @@ A quick rundown of how this project is broken up
   nights cavs game and emails us both a summary.
 
 I'll try to keep this to do list up to date as we progress.
+
 Steve:
   * Look at `pdf_emailer/generate_game_report.py`
   * Implimet `Game.get_away_team` function
