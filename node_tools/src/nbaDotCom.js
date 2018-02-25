@@ -51,7 +51,7 @@ let findPlayer = function(playerName) {
 let getGameBoxScore = function(gameId) {
   gameId = gameId || '0020900001'; // BOS v. CLE
 
-  return q.nfapply(nba.stats.boxScore, [{gameId: gameId}]);
+  return nba.stats.boxScore({ GameID: gameId });
 };
 
 /// get a player profile given a player id.
@@ -101,12 +101,6 @@ let getPlayerProfile = function(player) {
     nba.stats.playerProfile,
     [ { playerId: player.playerId } ]
   );
-};
-
-module.exports = {
-  findPlayer,
-  getGameBoxScore,
-  getPlayerProfile,
 };
 
 // get the stats for a player in the 2015 season

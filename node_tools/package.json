@@ -1,20 +1,19 @@
 {
   "name": "zap_nba_node_tools",
   "version": "0.0.1",
-  "description": "A few tools for creating data sets for the nba in node.js", 
+  "description": "A few tools for creating data sets for the nba in node.js",
   "repository": "",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "author": "mike zappitello",
   "license": "MIT",
-  "bugs": {
-  },
+  "bugs": {},
   "dependencies": {
     "nba": "latest",
     "q": "latest"
   },
-  "devDependencies": {
-  },
-  "files": [ "src" ]
+  "devDependencies": {},
+  "files": [
+    "src"
+  ]
 }
