@@ -1,28 +1,28 @@
-Things that we need to both have
-* tableau public for visualizatons
-* github for content management
-* vm somewhere for hosting
-  * make sure steve can ssh into this for SQL querries
+Well lets give this a go.
 
-Programing things that need to be done
-* write a crawler to get pbp updates
-  * use scores.espn.go.com/nba/
-* setup a db to store data wisely
-* script to generate file readable in tableau
-  * create a json dict ->.odata file for teams
-  * SQL for play by play data (tableau can read directly)
-  * maybe a .odata for player information
-    * keep some kind of id for player across pbp and personal info
-* setup site to view data (in real time???)
+I've used this repo at various points to run different stats experiments. Some
+pieces of it are a bit further along now, which is going to be really helpful
+for us.
 
-* Interactive Calendar for Stats
-  * We want to have data on each and every game
-  * filter out stats by player and by slice of time
-    * who has the most assists in 1 weeks time
-    * what did rws stats look like over the last 10 games
-    * what are the spurs stats like for winning games
-  *
+A quick rundown of how this project is broken up
+* node tools - java script tools to get data from nba dot com
+* python tools - python scrapers i used to get info
+    * this suite of tools is from befoer i used the node stuff.
+    * some of them are probably well out of date now.
+* data - data in json format with some python accessors that might be overkill
+* pdf emailer - the project we'll work on where it gets game data from last
+  nights cavs game and emails us both a summary.
 
-* Salary Cap Scheduler?
+I'll try to keep this to do list up to date as we progress.
+Steve:
+  * Look at `pdf_emailer/generate_game_report.py`
+  * Implimet `Game.get_away_team` function
+  * Impliment `get_highest_scorer` function
+  * Combine `data/teams.json` and `data/teams_npm_nba.json` into a single file
 
-** helpful URLs to remember **
+Mike:
+  * Find a play by play data source we can use as well.
+  * Build a tool to get last nights games (and filter out for the Cavs).
+  * Figure out how to use pyenv to manage packages instead of having us do it
+    independently.
+
