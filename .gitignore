@@ -9,3 +9,6 @@
 node_tools/node_modules/
 node_tools/test.js
 node_tools/derp.json
+
+# game summaries
+data/game_summaries/
