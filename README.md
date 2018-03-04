@@ -23,7 +23,7 @@ Steve:
 
 Mike:
   * Find a play by play data source we can use as well.
-  * Build a tool to get last nights games (and filter out for the Cavs).
+  * ~~Build a tool to get last nights games (and filter out for the Cavs).~~
   * Figure out how to use pyenv to manage packages instead of having us do it
     independently.
 
